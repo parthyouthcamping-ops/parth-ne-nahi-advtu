@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: 255, 255, 255;
+    --foreground: 26, 26, 26;
+
+    /* Core Brand Colors */
+    --primary-color: #FF4D00;
+    --primary: 255, 77, 0;
+
+    /* Soft Light Tint: #FFEDD5 */
+    --primary-light: 255, 237, 213;
+
+    /* Rich Deep Shade: #B33D00 */
+    --primary-deep: 179, 61, 0;
+}
+
+body {
+    color: rgb(var(--foreground));
+    background: rgb(var(--background));
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl rounded-3xl;
+    }
+}
+
+/* Ensure sonner toasts are not hidden by glass cards */
+[data-sonner-toaster] {
+    z-index: 9999 !important;
+}
+
+/* Professional A4 Print Styles */
+@media print {
+    @page {
+        size: A4;
+        margin: 20mm;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: white !important;
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+        color: #1a1a1a !important;
+    }
+
+    /* Force Vertical Flow */
+    section,
+    .container,
+    .grid {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    header {
+        position: relative !important;
+        height: auto !important;
+        padding: 20px 0 !important;
+        border-bottom: 2px solid #eee !important;
+        margin-bottom: 30px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    header img {
+        max-height: 80px !important;
+        width: auto !important;
+    }
+
+    /* Hero Section Scaling */
+    section.h-screen {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 20px 0 !important;
+    }
+
+    section.h-screen h1 {
+        font-size: 32pt !important;
+        margin-top: 10px !important;
+    }
+
+    /* Standardized Spacing */
+    section {
+        margin-bottom: 40px !important;
+        padding: 0 !important;
+    }
+
+    .py-32,
+    .py-24,
+    .py-20,
+    .py-16 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    h2 {
+        font-size: 22pt !important;
+        margin-bottom: 15px !important;
+        margin-top: 20px !important;
+    }
+
+    h3 {
+        font-size: 18pt !important;
+        margin-bottom: 10px !important;
+    }
+
+    p {
+        margin-bottom: 10px !important;
+    }
+
+    /* Strict Page Breaks */
+    .pricing-card,
+    .itinerary-item,
+    .hotel-card,
+    .glass-card,
+    .experience-section,
+    .includes-section {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* Hide Web UI */
+    .no-print,
+    button,
+    [role="button"],
+    .absolute.right-6,
+    .scroll-indicator,
+    .timeline-line,
+    .blur-3xl,
+    .blur-2xl {
+        display: none !important;
+    }
+
+    /* Image Optimization */
+    img {
+        max-width: 100% !important;
+        max-height: 400px !important;
+        object-fit: cover !important;
+        margin: 15px 0 !important;
+        border-radius: 8px !important;
+    }
+
+    /* Pricing Section Alignment */
+    .pricing-card {
+        border: 2px solid #eee !important;
+        padding: 30px !important;
+        background: #fcfcfc !important;
+    }
+
+    /* Footer reset */
+    footer {
+        background: white !important;
+        color: black !important;
+        border-top: 2px solid #eee !important;
+        padding: 30px 0 !important;
+        margin-top: 50px !important;
+    }
+
+    footer * {
+        color: black !important;
+    }
+}
