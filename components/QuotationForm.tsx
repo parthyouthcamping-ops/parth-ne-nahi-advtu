@@ -164,6 +164,7 @@ ${designation}`;
                 slug: formData.slug || generateSlug(formData.destination || "trip", formData.id || uuidv4()),
                 updatedAt: new Date().toISOString()
             };
+            console.log("Saving payload:", finalData);
             await saveQuotation(finalData);
             toast.success("Proposal saved successfully!");
             router.push("/admin");
